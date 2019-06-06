@@ -170,7 +170,7 @@ public class Encounters {
     }
 
     public void loadCity(){
-        Object[][] details = Save.getMapAtPos(Movement.getX(), Movement.getY());
+        Object[][] details = Save.getMapAtPos(Movement.getX(), Movement.getY()); //get city details
         Object[] cityDetails = null;
         Object[][] shop = null;
         Object[] quest = null;
@@ -183,7 +183,7 @@ public class Encounters {
         } catch (NullPointerException e){
             System.out.println("Property returned null, should not cause an issue: " + e);
         }
-        try {
+        try { //catch property returning null
             ArrayList<String> options = (ArrayList<String>) cityDetails[3];
             Object[] opt = options.toArray();
             String uCString;
@@ -193,10 +193,10 @@ public class Encounters {
                                 "\n(Staying at an inn recovers your health!) You have " + Start.player.getCoins() +
                                 " coins", "City", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                         opt, null);
-                if (userChoice == -1) {
+                if (userChoice == JOptionPane.CLOSED_OPTION) {
                     uCString = "Continue";
                 } else {
-                    uCString = opt[userChoice].toString();
+                    uCString = opt[userChoice].toString(); //convert user's choice to string
                 }
                 switch (uCString) {
                     case "Stay at inn":
@@ -204,7 +204,7 @@ public class Encounters {
                                         " coins\nYou have " + Start.player.getCoins() + " coins; "
                                         + Start.player.getHitPoints() + "/" + Start.player.getMaxHp() + " hp", "Stay?",
                                 JOptionPane.YES_NO_OPTION);
-                        if (sure == 0) {
+                        if (sure == JOptionPane.YES_OPTION) {
                             if (Start.player.getMaxHp() == Start.player.getHitPoints()) {
                                 JOptionPane.showMessageDialog(null, "Ahem, you have full health, there's nothing to heal...");
                             } else {
@@ -212,7 +212,7 @@ public class Encounters {
                                     JOptionPane.showMessageDialog(null, "You don't have enough coins to stay at the inn");
                                 } else {
                                     int random = (int) (Math.random() * (Start.player.getMaxHp()
-                                            - Start.player.getHitPoints())) + 20;
+                                            - Start.player.getHitPoints())) + 20; //heal 20 min, up to full
                                     Start.player.removeCoins(innCost);
                                     Start.player.addHp(random);
                                     JOptionPane.showMessageDialog(null, "Healed " + random + " hp!");
@@ -225,7 +225,7 @@ public class Encounters {
                         break;
                     case "See quest":
                         int[] questDeets = {(int) quest[3], (int) quest[1], (int) quest[2],
-                                Start.player.getKills((int) quest[3]), Movement.getX(), Movement.getY()};
+                                Start.player.getKills((int) quest[3]), Movement.getX(), Movement.getY()}; //get generated quest
                         //enemy type, amnt to kill, reward, start amount, city x, city y
                         String questString = "Kill " + quest[1] + " " + quest[0] + "s for " + quest[2] + " coins";
                         int[] playerQuest = Start.player.getActiveQuest();

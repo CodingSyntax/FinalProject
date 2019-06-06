@@ -79,23 +79,23 @@ public class Display {
         int choice = JOptionPane.showOptionDialog(null, getMapString(x[0], y[0]), "Map", JOptionPane.YES_NO_OPTION,
                 JOptionPane.PLAIN_MESSAGE, null, options, null);
         switch (choice){
-            case 0:
+            case 0: //north
                 y[0] += 1;
                 displayMap(x, y);
                 break;
-            case 1:
+            case 1: //south
                 y[0] -= 1;
                 displayMap(x, y);
                 break;
-            case 2:
+            case 2: //west
                 x[0] += 1;
                 displayMap(x, y);
                 break;
-            case 3:
+            case 3: //east
                 x[0] -= 1;
                 displayMap(x, y);
                 break;
-            case 5:
+            case 5: //continue
                 if (!isMapOpen){
                     isMapOpen = true;
                     constantMap();

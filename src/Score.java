@@ -3,13 +3,6 @@ import javax.swing.JOptionPane;
 public class Score {
     public static void End(){
 
-        /*      !TO DO BEFORE FINiSHED!         *
-         * 1.enemiesKilled int                   *
-         * 2.dragon boolean                      *
-         *                                       *
-         * -Alex Anderson                        *
-         ****************************************/
-
         final int MAX_SCORE = 10000;
         int score = 0;
         Enemies enemys = new Enemies();
