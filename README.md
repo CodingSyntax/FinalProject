@@ -30,7 +30,7 @@ Affects shops and enemy encounter. The image below is the statistics GUI:
 <h3 align = "center"> Class </h3>
 
 * Classes do 1.5x more damage with their weapons
-  * Swordsman => sword
+  * Swordsman => Sword
   * Archer => Bows
   * Mage => Wands
   
